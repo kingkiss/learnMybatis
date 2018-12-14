@@ -1,9 +1,12 @@
 package learnMybatis;
 
+import java.util.List;
+
 public class User {
 	private int id;
 	private String name;
 	private int age;
+	List<Product> products;
 	public int getId() {
 		return id;
 	}
@@ -21,6 +24,16 @@ public class User {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+	
+	public String toString(){
+		return "User [id="+ id +",name="+ name +"]";
 	}
 
 }
