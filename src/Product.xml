@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="learnMybatis">
+        <resultMap type="Product" id="productBean">
+            <id column="pid" property="id" />
+            <result column="pname" property="name" />
+            <result column="price" property="price" />
+     
+            <!-- 多对一的关系 -->
+            <!-- property: 指的是属性名称, javaType：指的是属性的类型 -->
+            <association property="user" javaType="User">
+                <id column="uid" property="id"/>
+                <result column="uname" property="name"/>
+                <result column="age" property="age"/>
+            </association>
+        </resultMap>
+     
+        <!-- 根据id查询Product, 关联将Orders查询出来 -->
+        <select id="listProduct" resultMap="productBean">
+            select u.id 'uid',p.id 'pid',u.name 'uname',p.name 'pname',u.age,p.price
+            from test u right join product p on u.id=p.uid 
+        </select>   
+    </mapper>

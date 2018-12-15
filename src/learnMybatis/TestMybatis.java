@@ -29,15 +29,22 @@ public class TestMybatis {
 //			System.out.println(user.getName());
 //		}
 		
-		//一对多
-		List<User> users = session.selectList("listUser");
-		for (User user : users){
-			System.out.println(user);
-			List<Product> products = user.getProducts();
-			for (Product product : products ){
-				System.out.println("\t"+product);
-			}
+//		//一对多
+//		List<User> users = session.selectList("listUser");
+//		for (User user : users){
+//			System.out.println(user);
+//			List<Product> products = user.getProducts();
+//			for (Product product : products ){
+//				System.out.println("\t"+product);
+//			}
+//		}
+		
+		//多对一
+		List<Product> products = session.selectList("listProduct");
+		for(Product product : products){
+			System.out.println(product+"对应的分类是 \t"+product.getUser());
 		}
+		
 		
 		
 		session.commit();
