@@ -3,7 +3,9 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-    <mapper namespace="learnMybatis">
+ 
+<!--  CURD SQL语句 -->
+<!--     <mapper namespace="learnMybatis">
         <insert id="addUser" parameterType="User">
             insert into test ( name,age ) values (#{name},#{age})
         </insert>
@@ -23,4 +25,31 @@
         <update id="updateUser" parameterType="User">
             update test set name=#{name} where id=#{id}
         </update>
+    </mapper> -->
+    
+<!--  一对多 left join -->
+    <mapper namespace="learnMybatis">
+    	<resultMap type="User" id="UserBean">
+    		<id column="uid" property="id"/>
+    		<result column="uname" property="name"/>
+    		
+    		<!-- 一对多的关系 -->
+    		<collection property="products" ofType="Product">
+    			<id column="pid" property="id"/>
+    			<result column="pname" property="name"/>
+    			<result column="price" property="price"/>
+    		</collection>
+    	</resultMap>
+    	
+    	<!-- 关联查询分类和产品表 -->
+    	<select id="listUser" resultMap="UserBean">
+    		select u.id 'uid' ,p.id 'pid',u.name 'uname',p.name 'pname',p.price
+    		from test u join product p on u.id=p.uid
+    	</select>
     </mapper>
+    
+    
+    
+    
+    
+    
