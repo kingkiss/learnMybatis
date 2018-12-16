@@ -22,4 +22,11 @@
             select u.id 'uid',p.id 'pid',u.name 'uname',p.name 'pname',u.age,p.price
             from test u right join product p on u.id=p.uid 
         </select>   
+        
+        <select id="getProduct" resultMap="productBean">
+            select u.*, p.*, u.id 'uid', p.id 'pid', u.name 'uname', p.name 'pname'
+                from test u
+                left join product p on u.id = p.uid
+            where p.id = #{id}
+        </select>
     </mapper>
