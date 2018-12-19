@@ -35,21 +35,66 @@
 </nav>
 
 <body style="padding-top: 55px;">
-    <div class="left-nav">
-        <div class="list-group">
-            <a href="#" class="list-group-item">物品分类</a>
-            <a href="#" class="list-group-item">申请记录</a>
-            <a href="#" class="list-group-item">借入记录</a>
-            <a href="#" class="list-group-item">归还记录</a>
-        </div>
+<div class="left-nav">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-item-active">物品分类</a>
+        <a href="#" class="list-group-item">管理物品</a>
+        <a href="#" class="list-group-item">用户管理</a>
+        <a href="#" class="list-group-item">申请审核</a>
+        <a href="#" class="list-group-item">申请记录</a>
+        <a href="#" class="list-group-item">借入记录</a>
+        <a href="#" class="list-group-item">归还记录</a>
+        <a href="#" class="list-group-item">使用统计</a>
+
     </div>
-    <div class="rigth-nav">
+</div>
+<div class="rigth-nav">
+    <div class="container">
         <div class="panel panel-default">
-                <div class="panel-body">
-                    Basic panel example
-                </div>
+            <div class="panel-heading">用户管理</div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>姓名</th>
+                        <th>部门</th>
+                        <th>邮箱</th>
+                        <th>电话</th>
+                        <th>权限</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>PC企业</td>
+                        <td>mark@office.com</td>
+                        <td>1324566666</td>
+                        <td>员工</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>PC企业</td>
+                        <td>jacob@office.com</td>
+                        <td>1324566666</td>
+                        <td>员工</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>PC企业</td>
+                        <td>larry@office.com</td>
+                        <td>1324566666</td>
+                        <td>财务</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+</div>
 
 
 <!-- 个人信息Modal框 -->
@@ -79,4 +124,10 @@
 
 
 </body>
+<script>
+    $('.list-group-item').click(function () {
+        $(this).siblings('.list-group-item').removeClass('list-item-active');
+        $(this).addClass('list-item-active');
+    })
+</script>
 </html>
